@@ -1,12 +1,15 @@
-var request = require('request');
+var colors = require('colors'),
+	getIp = require('./getIp'),
+	config = require('./config');
 
 
 (function doIt(){
-	request('http://icanhazip.com', function(error, response, body){
-		if (!error && response.statusCode == 200) {
-	    	console.log(body);
-		}
+	getIp(function(ipAddress){
+		console.log(ipAddress);
+	},
+	function(error, response){
+		console.log('Well Shit'.red, error, response);
 	});
 
-	setTimeout(doIt, 5000);
+	setTimeout(doIt, config.checkIpInterval);
 })();
