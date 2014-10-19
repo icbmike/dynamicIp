@@ -4,6 +4,7 @@
   "description": "A dynamic IP solution",
   "main": "index.js",
   "dependencies": {
+    "nodemailer": "^1.3.0",
     "request": "^2.45.0"
   },
   "devDependencies": {},
