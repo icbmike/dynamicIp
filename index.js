@@ -1,3 +1,5 @@
+'use strict';
+
 var colors = require('colors'),
 	getIp = require('./getIp'),
 	config = require('./config');
@@ -12,4 +14,4 @@ var colors = require('colors'),
 	});
 
 	setTimeout(doIt, config.checkIpInterval);
-})();
+}());
