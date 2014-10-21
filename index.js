@@ -2,12 +2,18 @@
 
 var colors = require('colors'),
 	getIp = require('./getIp'),
-	config = require('./config');
+	config = require('./config'),
+	updateRoute53 = require('./updateRoute53');
 
+var currentIpAddress;
 
 (function doIt(){
 	getIp(function(ipAddress){
-		console.log(ipAddress);
+		if(currentIpAddress !== ipAddress){
+			updateRoute53(ipAddress, config, function(){
+				currentIpAddress = ipAddress;
+			});
+		}
 	},
 	function(error, response){
 		console.log('Well Shit'.red, error, response);
