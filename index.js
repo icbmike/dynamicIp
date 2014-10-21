@@ -10,7 +10,8 @@ var currentIpAddress;
 (function doIt(){
 	getIp(function(ipAddress){
 		if(currentIpAddress !== ipAddress){
-			updateRoute53(ipAddress, config, function(){
+			updateRoute53(ipAddress, config, function(err, response){
+				console.log(response);
 				currentIpAddress = ipAddress;
 			});
 		}
