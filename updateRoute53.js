@@ -8,14 +8,13 @@ module.exports = function updateRoute53(ipAddress, config, successCallback){
 	    secretAccessKey : config.AWS_SECRET_ACCESS_KEY,
 	});
 
-
 	var args = {
-	    zoneId : 'Z5RVUNJEIRL8E',
-	    name   : 'remote.icbmike.com',
+	    zoneId : config.zoneId,
+	    name   : config.domainName,
 	    type   : 'A',
 	    ttl    : 300,
 	    values : [
-	        ipAddress,
+	        ipAddress
 	    ],
 	};
 
