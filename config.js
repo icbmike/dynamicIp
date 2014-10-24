@@ -4,7 +4,7 @@ var fs = require('fs'),
 	configFileName = 'config.json';
 
 var defaults = {
-	checkIpInterval : 5000
+	checkIpInterval : 1800000 //30 Minutes
 };
 
 var configFromFile = {};
