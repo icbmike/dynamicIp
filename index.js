@@ -11,13 +11,18 @@ var currentIpAddress;
 	getIp(function(ipAddress){
 		if(currentIpAddress !== ipAddress){
 			updateRoute53(ipAddress, config, function(err, response){
-				console.log(response);
-				currentIpAddress = ipAddress;
+				if(err){
+					console.log('Well Shit, Failed to Update Route53'.red, err, response);
+				}
+				else{
+					console.log(response);
+					currentIpAddress = ipAddress;
+				}
 			});
 		}
 	},
 	function(error, response){
-		console.log('Well Shit'.red, error, response);
+		console.log('Well Shit, Failed to get IP Address'.red, error, response);
 	});
 
 	setTimeout(doIt, config.checkIpInterval);
