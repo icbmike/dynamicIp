@@ -10,12 +10,15 @@ var currentIpAddress;
 (function doIt(){
 	getIp(function(ipAddress){
 		if(currentIpAddress !== ipAddress){
+
+			console.log('IP Address Changed: '.blue, ipAddress);
+
 			updateRoute53(ipAddress, config, function(err, response){
 				if(err){
 					console.log('Well Shit, Failed to Update Route53'.red, err, response);
 				}
 				else{
-					console.log(response);
+					console.log('Updated Route 53: '.blue, response);
 					currentIpAddress = ipAddress;
 				}
 			});
