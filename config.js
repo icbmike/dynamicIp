@@ -10,7 +10,7 @@ var defaults = {
 var configFromFile = {};
 
 if(fs.existsSync(configFileName)){
-	configFromFile = JSON.Parse(fs.readFileSync(configFileName, {encoding: 'utf8'}));
+	configFromFile = JSON.parse(fs.readFileSync(configFileName, {encoding: 'utf8'}));
 }
 
 module.exports = _.defaults(configFromFile, defaults);
